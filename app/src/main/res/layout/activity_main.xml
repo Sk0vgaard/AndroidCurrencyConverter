@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.skovgaard.androidcurrencyconverter.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/currency" />
+
+    <EditText
+        android:id="@+id/amountTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="Enter the amount in USD"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="24sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/convertBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Convert" />
+
+    <TextView
+        android:id="@+id/dkkCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DKK:"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/sekCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEK:"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/nokCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOK:"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/euroCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EURO"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="18sp" />
+
+</LinearLayout>
