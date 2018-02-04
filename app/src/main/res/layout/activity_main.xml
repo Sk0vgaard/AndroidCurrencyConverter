@@ -8,11 +8,11 @@
     tools:context="com.example.skovgaard.androidcurrencyconverter.MainActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/currency" />
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/currency" />-->
 
     <EditText
         android:id="@+id/amountTxt"
