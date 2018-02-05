@@ -1,5 +1,4 @@
 package com.example.skovgaard.androidcurrencyconverter;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,24 +6,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.widget.Toast;
+
 import com.loopj.android.http.*;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText mAmount;
-    Button mConvert;
-    TextView mDKK, mSEK, mNOK, mEURO;
+    Button mBtnConvert;
+    TextView mDKK, mSEK, mNOK, mEURO, mPound;
 
-    private static final String currencyURL = "https://openexchangerates.org/api/latest.json?app_id=000bcc9aa760417880d91ecd4fd665cf";
+    private static final String allCurrencyURL = "https://openexchangerates.org/api/latest.json?app_id=000bcc9aa760417880d91ecd4fd665cf";
+    private static final String specificCurrencyURL = "https://openexchangerates.org/api/latest.json?app_id=000bcc9aa760417880d91ecd4fd665cf&symbols=DKK,SEK,NOK,EUR,GBP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,28 +30,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAmount = findViewById(R.id.amountTxt);
-        mConvert = findViewById(R.id.convertBtn);
+        mBtnConvert = findViewById(R.id.convertBtn);
         mDKK = findViewById(R.id.dkkCurrency);
         mSEK = findViewById(R.id.sekCurrency);
         mNOK = findViewById(R.id.nokCurrency);
         mEURO = findViewById(R.id.euroCurrency);
+        mPound = findViewById(R.id.poundCurrency);
 
-        mConvert.setOnClickListener(new View.OnClickListener() {
+        mBtnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                async();
+
+                asyncRequestForAPI();
             }
         });
 
     }
 
-    private void async() {
+    private void asyncRequestForAPI() {
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(currencyURL, new AsyncHttpResponseHandler() {
+        client.get(specificCurrencyURL, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 // called when response HTTP status is "200 OK"
+
+
+                Log.i("Catching", new String(response));
+                try {
+                    JSONObject jsonObject = new JSONObject(new String(response));
+                    Log.d("test", jsonObject.getString("SEK"));
+                } catch (JSONException e) {
+                    Log.d("failed hard", new String(response));
+                    e.printStackTrace();
+                }
+
             }
 
             @Override
@@ -73,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
 
 //    private String getWebsite(String address) {
 //

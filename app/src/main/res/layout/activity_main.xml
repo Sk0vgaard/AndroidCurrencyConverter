@@ -38,7 +38,7 @@
         android:id="@+id/dkkCurrency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DKK:"
+        android:text="DKK: "
         android:layout_marginTop="30dp"
         android:paddingLeft="10dp"
         android:textSize="18sp" />
@@ -47,7 +47,7 @@
         android:id="@+id/sekCurrency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SEK:"
+        android:text="SEK: "
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:textSize="18sp" />
@@ -56,7 +56,7 @@
         android:id="@+id/nokCurrency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NOK:"
+        android:text="NOK: "
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:textSize="18sp" />
@@ -65,7 +65,16 @@
         android:id="@+id/euroCurrency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="EURO"
+        android:text="EURO: "
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/poundCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POUND: "
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:textSize="18sp" />
