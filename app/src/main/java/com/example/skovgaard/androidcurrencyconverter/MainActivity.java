@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Button mBtnConvert;
     TextView mDKK, mSEK, mNOK, mEURO, mPound;
 
+    private Double sekCurrency, dkkCurrency, euroCurrency, gbpCurrency, nokCurrency;
+
     private static final String allCurrencyURL = "https://openexchangerates.org/api/latest.json?app_id=000bcc9aa760417880d91ecd4fd665cf";
     private static final String specificCurrencyURL = "https://openexchangerates.org/api/latest.json?app_id=000bcc9aa760417880d91ecd4fd665cf&symbols=DKK,SEK,NOK,EUR,GBP";
 
@@ -37,14 +39,26 @@ public class MainActivity extends AppCompatActivity {
         mEURO = findViewById(R.id.euroCurrency);
         mPound = findViewById(R.id.poundCurrency);
 
+        asyncRequestForAPI();
+
         mBtnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                asyncRequestForAPI();
+                calcOfCurrencies();
             }
         });
 
+    }
+
+    private void calcOfCurrencies() {
+        double usdAmount = Double.parseDouble(mAmount.getText().toString());
+
+        mDKK.setText("DKK: " + usdAmount * dkkCurrency);
+        mSEK.setText("SEK: " + usdAmount * sekCurrency);
+        mNOK.setText("NOK: " + usdAmount * nokCurrency);
+        mEURO.setText("EURO: " + usdAmount * euroCurrency);
+        mPound.setText("GPD: " + usdAmount * gbpCurrency);
     }
 
     private void asyncRequestForAPI() {
@@ -54,14 +68,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 // called when response HTTP status is "200 OK"
-
-
-                Log.i("Catching", new String(response));
                 try {
+                    Log.i("Catching", "On Success");
                     JSONObject jsonObject = new JSONObject(new String(response));
-                    Log.d("test", jsonObject.getString("SEK"));
+                    JSONObject currencies = jsonObject.getJSONObject("rates");
+
+                    sekCurrency = currencies.getDouble("SEK");
+                    dkkCurrency = currencies.getDouble("DKK");
+                    nokCurrency = currencies.getDouble("NOK");
+                    gbpCurrency = currencies.getDouble("GBP");
+                    euroCurrency = currencies.getDouble("EUR");
+
+                    Log.d("Catching", sekCurrency + "");
                 } catch (JSONException e) {
-                    Log.d("failed hard", new String(response));
+                    Log.d("Catching", e.getMessage());
                     e.printStackTrace();
                 }
 
@@ -70,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable throwable) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                Log.d("Catching", "Response failed");
             }
 
             @Override

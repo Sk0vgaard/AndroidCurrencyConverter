@@ -21,7 +21,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="Enter the amount in USD"
+        android:hint="Enter the amount in USD"
         android:textAlignment="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="24sp"
