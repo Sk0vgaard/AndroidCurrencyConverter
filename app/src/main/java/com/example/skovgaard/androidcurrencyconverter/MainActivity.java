@@ -1,4 +1,5 @@
 package com.example.skovgaard.androidcurrencyconverter;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
         mBtnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                calcOfCurrencies();
+                try {
+                    calcOfCurrencies();
+                } catch (Exception e) {
+                    Log.d("Catching", e.getMessage());
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     gbpCurrency = currencies.getDouble("GBP");
                     euroCurrency = currencies.getDouble("EUR");
 
-                    Log.d("Catching", sekCurrency + "");
+                    Log.d("Catching", currencies + "");
                 } catch (JSONException e) {
                     Log.d("Catching", e.getMessage());
                     e.printStackTrace();
