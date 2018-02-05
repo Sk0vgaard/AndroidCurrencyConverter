@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Catching", e.getMessage());
                     e.printStackTrace();
                 }
-
             }
 
             @Override
@@ -105,75 +104,5 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
-
-//    private String getWebsite(String address) {
-//
-//        StringBuffer stringBuffer = new StringBuffer();
-//        BufferedReader reader = null;
-//
-//        try {
-//            URL url = new URL(address);
-//            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-//            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-//
-//            reader = new BufferedReader(new InputStreamReader(in));
-//            String line = "";
-//
-//            while ((line = reader.readLine()) != null) {
-//                stringBuffer.append(line);
-//            }
-//
-//        } catch (IOException e) {
-//            System.out.println("ERROR: " + e);
-//            e.printStackTrace();
-//        } finally {
-//            if (reader != null) {
-//                try {
-//                    reader.close();
-//                } catch (IOException e) {
-//                    System.out.println("ERROR: " + e);
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//    return stringBuffer.toString();
-//    }
-//
-//    // 1 Params, the type of the parameters sent to the task upon execution.
-//    // 2 Progress, the type of the progress units published during the background computation.
-//    // 3 Result, the type of the result of the background computation.
-//    public class GetWebpageTask extends AsyncTask<String, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(String... url) {
-//
-//            return getWebsite(url[0]);
-//
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//
-//
-//
-//            super.onPostExecute(result);
-//        }
-//
-//        @Override
-//        protected void onProgressUpdate(Void... values) {
-//            super.onProgressUpdate(values);
-//        }
-//
-//        @Override
-//        protected void onPreExecute() {
-//
-//            super.onPreExecute();
-//        }
-//    }
-//
-
-
-
 
 }
